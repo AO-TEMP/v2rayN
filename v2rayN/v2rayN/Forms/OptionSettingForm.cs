@@ -69,6 +69,8 @@ namespace v2rayN.Forms
             txtremoteDNS.Text = config.remoteDNS;
 
             cmblistenerType.SelectedIndex = (int)config.listenerType;
+
+            chkdefAllowInsecure.Checked = config.defAllowInsecure;
         }
 
         /// <summary>
@@ -265,6 +267,8 @@ namespace v2rayN.Forms
 
             config.listenerType = (ListenerType)Enum.ToObject(typeof(ListenerType), cmblistenerType.SelectedIndex);
 
+            config.defAllowInsecure = chkdefAllowInsecure.Checked;
+
             return 0;
         }
 
@@ -440,7 +444,7 @@ namespace v2rayN.Forms
 
         private void linkLabelRoutingDoc_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("https://www.v2ray.com/chapter_02/03_routing.html#routingobject");
+            System.Diagnostics.Process.Start("https://www.v2fly.org/chapter_02/03_routing.html");
         }
     }
 

@@ -4,6 +4,8 @@ using System.IO;
 using System.Net;
 using v2rayN.Mode;
 using v2rayN.Base;
+using System.Linq;
+using v2rayN.Tool;
 
 namespace v2rayN.Handler
 {
@@ -119,6 +121,11 @@ namespace v2rayN.Handler
             {
                 config.uiItem = new UIItem();
             }
+            if (config.uiItem.mainLvColWidth == null)
+            {
+                config.uiItem.mainLvColWidth = new Dictionary<string, int>();
+            }
+
             //// 如果是用户升级，首次会有端口号为0的情况，不可用，这里处理
             //if (config.pacPort == 0)
             //{
@@ -206,6 +213,10 @@ namespace v2rayN.Handler
             else
             {
                 //添加
+                if (Utils.IsNullOrEmpty(vmessItem.allowInsecure))
+                {
+                    vmessItem.allowInsecure = config.defAllowInsecure.ToString();
+                }
                 config.vmess.Add(vmessItem);
                 if (config.vmess.Count == 1)
                 {
@@ -276,18 +287,19 @@ namespace v2rayN.Handler
             VmessItem vmessItem = new VmessItem
             {
                 configVersion = config.vmess[index].configVersion,
-                configType = config.vmess[index].configType,
                 address = config.vmess[index].address,
                 port = config.vmess[index].port,
                 id = config.vmess[index].id,
                 alterId = config.vmess[index].alterId,
                 security = config.vmess[index].security,
                 network = config.vmess[index].network,
+                remarks = string.Format("{0}-clone", config.vmess[index].remarks),
                 headerType = config.vmess[index].headerType,
                 requestHost = config.vmess[index].requestHost,
                 path = config.vmess[index].path,
                 streamSecurity = config.vmess[index].streamSecurity,
-                remarks = string.Format("{0}-clone", config.vmess[index].remarks)
+                allowInsecure = config.vmess[index].allowInsecure,
+                configType = config.vmess[index].configType
             };
 
             config.vmess.Insert(index + 1, vmessItem); // 插入到下一项
@@ -870,6 +882,79 @@ namespace v2rayN.Handler
                 {
                     config.vmess.RemoveAt(k);
                 }
+            }
+
+            ToJsonFile(config);
+            return 0;
+        }
+
+        public static int AddformMainLvColWidth(ref Config config, string name, int width)
+        {
+            if (config.uiItem.mainLvColWidth == null)
+            {
+                config.uiItem.mainLvColWidth = new Dictionary<string, int>();
+            }
+            if (config.uiItem.mainLvColWidth.ContainsKey(name))
+            {
+                config.uiItem.mainLvColWidth[name] = width;
+            }
+            else
+            {
+                config.uiItem.mainLvColWidth.Add(name, width);
+            }
+            return 0;
+        }
+        public static int GetformMainLvColWidth(ref Config config, string name, int width)
+        {
+            if (config.uiItem.mainLvColWidth == null)
+            {
+                config.uiItem.mainLvColWidth = new Dictionary<string, int>();
+            }
+            if (config.uiItem.mainLvColWidth.ContainsKey(name))
+            {
+                return config.uiItem.mainLvColWidth[name];
+            }
+            else
+            {
+                return width;
+            }
+        }
+
+        public static int SortServers(ref Config config, EServerColName name, bool asc)
+        {
+            if (config.vmess.Count <= 0)
+            {
+                return -1;
+            }
+            switch (name)
+            {
+                case EServerColName.configType:
+                case EServerColName.remarks:
+                case EServerColName.address:
+                case EServerColName.port:
+                case EServerColName.security:
+                case EServerColName.network:
+                case EServerColName.testResult:
+                    break;
+                default:
+                    return -1;
+            }
+            string itemId = config.getItemId();
+            var items = config.vmess.AsQueryable();
+
+            if (asc)
+            {
+                config.vmess = items.OrderBy(name.ToString()).ToList();
+            }
+            else
+            {
+                config.vmess = items.OrderByDescending(name.ToString()).ToList();
+            }
+
+            var index_ = config.vmess.FindIndex(it => it.getItemId() == itemId);
+            if (index_ >= 0)
+            {
+                config.index = index_;
             }
 
             ToJsonFile(config);

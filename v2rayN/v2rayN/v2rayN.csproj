@@ -157,6 +157,7 @@
     </Compile>
     <Compile Include="HttpProxyHandler\SysProxyHandle.cs" />
     <Compile Include="Mode\EMove.cs" />
+    <Compile Include="Mode\EServerColName.cs" />
     <Compile Include="Mode\ServerStatistics.cs" />
     <Compile Include="Mode\SysproxyConfig.cs" />
     <Compile Include="Mode\EConfigType.cs" />
@@ -208,6 +209,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tool\FileManager.cs" />
     <Compile Include="Tool\Job.cs" />
+    <Compile Include="Tool\QueryableExtension.cs" />
     <Compile Include="Tool\UIRes.cs" />
     <Compile Include="Tool\UI.cs" />
     <Compile Include="Tool\Utils.cs" />
@@ -369,6 +371,7 @@
     <None Include="Resources\minimize.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\share.png" />
     <None Include="Resources\promotion.png" />
     <EmbeddedResource Include="Sample\BlankPac.txt" />
     <None Include="Resources\sub.png" />

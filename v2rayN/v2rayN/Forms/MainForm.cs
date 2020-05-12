@@ -73,7 +73,7 @@ namespace v2rayN.Forms
         {
             InitServersView();
             RefreshServers();
-            lvServers.AutoResizeColumns();
+            RestoreUI();
 
             LoadV2ray();
 
@@ -85,6 +85,7 @@ namespace v2rayN.Forms
         {
             if (e.CloseReason == CloseReason.UserClosing)
             {
+                StorageUI();
                 e.Cancel = true;
                 HideForm();
                 return;
@@ -99,14 +100,10 @@ namespace v2rayN.Forms
             //}
             //else
             //{
-            //    //this.splitContainer1.SplitterDistance = config.uiItem.mainQRCodeWidth;
+
             //}
         }
 
-        private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
-        {
-            //config.uiItem.mainQRCodeWidth = splitContainer1.SplitterDistance;
-        }
 
         //private const int WM_QUERYENDSESSION = 0x0011;
         //protected override void WndProc(ref Message m)
@@ -126,6 +123,34 @@ namespace v2rayN.Forms
         //            break;
         //    }
         //}
+
+        private void RestoreUI()
+        {
+            scMain.Panel2Collapsed = true;
+
+            if (!config.uiItem.mainSize.IsEmpty)
+            {
+                this.Width = config.uiItem.mainSize.Width;
+                this.Height = config.uiItem.mainSize.Height;
+            }
+
+            for (int k = 0; k < lvServers.Columns.Count; k++)
+            {
+                var width = ConfigHandler.GetformMainLvColWidth(ref config, ((EServerColName)k).ToString(), lvServers.Columns[k].Width);
+                lvServers.Columns[k].Width = width;
+            }
+        }
+
+        private void StorageUI()
+        {
+            config.uiItem.mainSize = new Size(this.Width, this.Height);
+
+            for (int k = 0; k < lvServers.Columns.Count; k++)
+            {
+                ConfigHandler.AddformMainLvColWidth(ref config, ((EServerColName)k).ToString(), lvServers.Columns[k].Width);
+            }
+        }
+
         #endregion
 
         #region 显示服务器 listview 和 menu
@@ -136,6 +161,7 @@ namespace v2rayN.Forms
         private void RefreshServers()
         {
             RefreshServersView();
+            //lvServers.AutoResizeColumns();
             RefreshServersMenu();
         }
 
@@ -144,6 +170,7 @@ namespace v2rayN.Forms
         /// </summary>
         private void InitServersView()
         {
+            lvServers.BeginUpdate();
             lvServers.Items.Clear();
 
             lvServers.GridLines = true;
@@ -151,25 +178,26 @@ namespace v2rayN.Forms
             lvServers.View = View.Details;
             lvServers.Scrollable = true;
             lvServers.MultiSelect = true;
-            lvServers.HeaderStyle = ColumnHeaderStyle.Nonclickable;
+            lvServers.HeaderStyle = ColumnHeaderStyle.Clickable;
 
-            lvServers.Columns.Add("", 30, HorizontalAlignment.Center);
-            lvServers.Columns.Add(UIRes.I18N("LvServiceType"), 80, HorizontalAlignment.Left);
-            lvServers.Columns.Add(UIRes.I18N("LvAlias"), 100, HorizontalAlignment.Left);
-            lvServers.Columns.Add(UIRes.I18N("LvAddress"), 120, HorizontalAlignment.Left);
-            lvServers.Columns.Add(UIRes.I18N("LvPort"), 50, HorizontalAlignment.Left);
-            lvServers.Columns.Add(UIRes.I18N("LvEncryptionMethod"), 90, HorizontalAlignment.Left);
-            lvServers.Columns.Add(UIRes.I18N("LvTransportProtocol"), 70, HorizontalAlignment.Left);
-            lvServers.Columns.Add(UIRes.I18N("LvSubscription"), 50, HorizontalAlignment.Left);
-            lvServers.Columns.Add(UIRes.I18N("LvTestResults"), 70, HorizontalAlignment.Left);
+            lvServers.Columns.Add("", 30);
+            lvServers.Columns.Add(UIRes.I18N("LvServiceType"), 80);
+            lvServers.Columns.Add(UIRes.I18N("LvAlias"), 100);
+            lvServers.Columns.Add(UIRes.I18N("LvAddress"), 120);
+            lvServers.Columns.Add(UIRes.I18N("LvPort"), 50);
+            lvServers.Columns.Add(UIRes.I18N("LvEncryptionMethod"), 90);
+            lvServers.Columns.Add(UIRes.I18N("LvTransportProtocol"), 70);
+            lvServers.Columns.Add(UIRes.I18N("LvSubscription"), 50);
+            lvServers.Columns.Add(UIRes.I18N("LvTestResults"), 70, HorizontalAlignment.Right);
 
             if (statistics != null && statistics.Enable)
             {
-                lvServers.Columns.Add(UIRes.I18N("LvTodayDownloadDataAmount"), 70, HorizontalAlignment.Left);
-                lvServers.Columns.Add(UIRes.I18N("LvTodayUploadDataAmount"), 70, HorizontalAlignment.Left);
-                lvServers.Columns.Add(UIRes.I18N("LvTotalDownloadDataAmount"), 70, HorizontalAlignment.Left);
-                lvServers.Columns.Add(UIRes.I18N("LvTotalUploadDataAmount"), 70, HorizontalAlignment.Left);
+                lvServers.Columns.Add(UIRes.I18N("LvTodayDownloadDataAmount"), 70);
+                lvServers.Columns.Add(UIRes.I18N("LvTodayUploadDataAmount"), 70);
+                lvServers.Columns.Add(UIRes.I18N("LvTotalDownloadDataAmount"), 70);
+                lvServers.Columns.Add(UIRes.I18N("LvTotalUploadDataAmount"), 70);
             }
+            lvServers.EndUpdate();
         }
 
         /// <summary>
@@ -177,6 +205,7 @@ namespace v2rayN.Forms
         /// </summary>
         private void RefreshServersView()
         {
+            lvServers.BeginUpdate();
             lvServers.Items.Clear();
 
             for (int k = 0; k < config.vmess.Count; k++)
@@ -210,22 +239,20 @@ namespace v2rayN.Forms
                     }
                 }
                 ListViewItem lvItem = new ListViewItem(def);
-                _addSubItem(lvItem, "type", ((EConfigType)item.configType).ToString());
-                _addSubItem(lvItem, "remarks", item.remarks);
-                _addSubItem(lvItem, "address", item.address);
-                _addSubItem(lvItem, "port", item.port.ToString());
-                //_addSubItem(lvItem, "id", item.id);
-                //_addSubItem(lvItem, "alterId", item.alterId.ToString());
-                _addSubItem(lvItem, "security", item.security);
-                _addSubItem(lvItem, "network", item.network);
-                _addSubItem(lvItem, "SubRemarks", item.getSubRemarks(config));
-                _addSubItem(lvItem, "testResult", item.testResult);
+                _addSubItem(lvItem, EServerColName.configType.ToString(), ((EConfigType)item.configType).ToString());
+                _addSubItem(lvItem, EServerColName.remarks.ToString(), item.remarks);
+                _addSubItem(lvItem, EServerColName.address.ToString(), item.address);
+                _addSubItem(lvItem, EServerColName.port.ToString(), item.port.ToString());
+                _addSubItem(lvItem, EServerColName.security.ToString(), item.security);
+                _addSubItem(lvItem, EServerColName.network.ToString(), item.network);
+                _addSubItem(lvItem, EServerColName.subRemarks.ToString(), item.getSubRemarks(config));
+                _addSubItem(lvItem, EServerColName.testResult.ToString(), item.testResult);
                 if (stats)
                 {
-                    _addSubItem(lvItem, "todayDown", todayDown);
-                    _addSubItem(lvItem, "todayUp", todayUp);
-                    _addSubItem(lvItem, "totalDown", totalDown);
-                    _addSubItem(lvItem, "totalUp", totalUp);
+                    _addSubItem(lvItem, EServerColName.todayDown.ToString(), todayDown);
+                    _addSubItem(lvItem, EServerColName.todayUp.ToString(), todayUp);
+                    _addSubItem(lvItem, EServerColName.totalDown.ToString(), totalDown);
+                    _addSubItem(lvItem, EServerColName.totalUp.ToString(), totalUp);
                 }
 
                 if (k % 2 == 1) // 隔行着色
@@ -235,12 +262,13 @@ namespace v2rayN.Forms
                 if (config.index.Equals(k))
                 {
                     //lvItem.Checked = true;
-                    lvItem.ForeColor = Color.Blue;
+                    lvItem.ForeColor = Color.DodgerBlue;
                     lvItem.Font = new Font(lvItem.Font, FontStyle.Bold);
                 }
 
                 if (lvItem != null) lvServers.Items.Add(lvItem);
             }
+            lvServers.EndUpdate();
 
             //if (lvServers.Items.Count > 0)
             //{
@@ -349,6 +377,35 @@ namespace v2rayN.Forms
             }
         }
 
+        private void lvServers_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            if (e.Column < 0)
+            {
+                return;
+            }
+
+            try
+            {
+                var tag = lvServers.Columns[e.Column].Tag?.ToString();
+                bool asc = Utils.IsNullOrEmpty(tag) ? true : !Convert.ToBoolean(tag);
+                if (ConfigHandler.SortServers(ref config, (EServerColName)e.Column, asc) != 0)
+                {
+                    return;
+                }
+                lvServers.Columns[e.Column].Tag = Convert.ToString(asc);
+                RefreshServers();
+            }
+            catch (Exception ex)
+            {
+                Utils.SaveLog(ex.Message, ex);
+            }
+
+            if (e.Column < 0)
+            {
+                return;
+            }
+            
+        }
         #endregion
 
         #region v2ray 操作
@@ -358,7 +415,7 @@ namespace v2rayN.Forms
         /// </summary>
         private void LoadV2ray()
         {
-            tsbService.Enabled = false;
+            tsbReload.Enabled = false;
 
             if (Global.reloadV2ray)
             {
@@ -371,7 +428,7 @@ namespace v2rayN.Forms
 
             ChangePACButtonStatus(config.listenerType);
 
-            tsbService.Enabled = true;
+            tsbReload.Enabled = true;
         }
 
         /// <summary>
@@ -644,6 +701,17 @@ namespace v2rayN.Forms
             if (GetLvSelectedIndex() < 0) return;
             ClearTestResult();
             SpeedtestHandler statistics = new SpeedtestHandler(ref config, ref v2rayHandler, lvSelecteds, actionType, UpdateSpeedtestHandler);
+        }
+
+        private void tsbTestMe_Click(object sender, EventArgs e)
+        {
+            string result = httpProxyTest() + "ms";
+            AppendText(false, string.Format(UIRes.I18N("TestMeOutput"), result));
+        }
+        private int httpProxyTest()
+        {
+            SpeedtestHandler statistics = new SpeedtestHandler(ref config, ref v2rayHandler, lvSelecteds, "", UpdateSpeedtestHandler);
+            return statistics.RunAvailabilityCheck();
         }
 
         private void menuExport2ClientConfig_Click(object sender, EventArgs e)
@@ -970,7 +1038,6 @@ namespace v2rayN.Forms
 
         private void menuExit_Click(object sender, EventArgs e)
         {
-
             this.Visible = false;
             this.Close();
 
@@ -983,9 +1050,13 @@ namespace v2rayN.Forms
             this.Show();
             this.WindowState = FormWindowState.Normal;
             this.Activate();
-            //this.notifyIcon1.Visible = false;
             this.ShowInTaskbar = true;
+            //this.notifyIcon1.Visible = false;
             this.txtMsgBox.ScrollToCaret();
+            if (config.index >= 0 && config.index < lvServers.Items.Count)
+            {
+                lvServers.EnsureVisible(config.index); // workaround
+            }
 
             SetVisibleCore(true);
         }
@@ -1007,8 +1078,11 @@ namespace v2rayN.Forms
 
         private void SetTestResult(int k, string txt)
         {
-            config.vmess[k].testResult = txt;
-            lvServers.Items[k].SubItems["testResult"].Text = txt;
+            if (k < lvServers.Items.Count)
+            {
+                config.vmess[k].testResult = txt;
+                lvServers.Items[k].SubItems["testResult"].Text = txt;
+            }
         }
         private void ClearTestResult()
         {
@@ -1021,11 +1095,7 @@ namespace v2rayN.Forms
         {
             lvServers.Invoke((MethodInvoker)delegate
             {
-                lvServers.SuspendLayout();
-
                 SetTestResult(index, msg);
-
-                lvServers.ResumeLayout();
             });
         }
 
@@ -1045,14 +1115,14 @@ namespace v2rayN.Forms
                     {
                         lvServers.Invoke((MethodInvoker)delegate
                         {
-                            lvServers.SuspendLayout();
+                            lvServers.BeginUpdate();
 
                             lvServers.Items[i].SubItems["todayDown"].Text = Utils.HumanFy(statistics[index].todayDown);
                             lvServers.Items[i].SubItems["todayUp"].Text = Utils.HumanFy(statistics[index].todayUp);
                             lvServers.Items[i].SubItems["totalDown"].Text = Utils.HumanFy(statistics[index].totalDown);
                             lvServers.Items[i].SubItems["totalUp"].Text = Utils.HumanFy(statistics[index].totalUp);
 
-                            lvServers.ResumeLayout();
+                            lvServers.EndUpdate();
                         });
                     }
                 }
@@ -1187,11 +1257,11 @@ namespace v2rayN.Forms
                 {
                     int httpPort = config.GetLocalPort(Global.InboundHttp);
                     WebProxy webProxy = new WebProxy(Global.Loopback, httpPort);
-                    downloadHandle.DownloadFileAsync(url, webProxy, 60);
+                    downloadHandle.DownloadFileAsync(url, webProxy, 600);
                 }
                 else
                 {
-                    downloadHandle.DownloadFileAsync(url, null, 60);
+                    downloadHandle.DownloadFileAsync(url, null, 600);
                 }
             }
         }
@@ -1206,7 +1276,7 @@ namespace v2rayN.Forms
                 {
                     if (args.Success)
                     {
-                        AppendText(false, UIRes.I18N("MsgParsingV2rayCoreSuccessfully"));
+                        AppendText(false, string.Format(UIRes.I18N("MsgParsingSuccessfully"), "v2rayN"));
 
                         string url = args.Msg;
                         this.Invoke((MethodInvoker)(delegate
@@ -1264,7 +1334,7 @@ namespace v2rayN.Forms
                 {
                     if (args.Success)
                     {
-                        AppendText(false, UIRes.I18N("MsgParsingV2rayCoreSuccessfully"));
+                        AppendText(false, string.Format(UIRes.I18N("MsgParsingSuccessfully"), "v2rayCore"));
 
                         string url = args.Msg;
                         this.Invoke((MethodInvoker)(delegate
@@ -1372,6 +1442,11 @@ namespace v2rayN.Forms
         private void tsbAbout_Click(object sender, EventArgs e)
         {
             Process.Start(Global.AboutUrl);
+        }
+
+        private void tsbV2rayWebsite_Click(object sender, EventArgs e)
+        {
+            Process.Start(Global.v2rayWebsiteUrl);
         }
 
         private void tsbPromotion_Click(object sender, EventArgs e)
@@ -1492,6 +1567,11 @@ namespace v2rayN.Forms
             }
         }
 
+        private void tsbQRCodeSwitch_CheckedChanged(object sender, EventArgs e)
+        {
+            bool bShow = tsbQRCodeSwitch.Checked;
+            scMain.Panel2Collapsed = !bShow;
+        }
         #endregion
 
         #region Language
@@ -1512,22 +1592,8 @@ namespace v2rayN.Forms
         }
 
 
+
         #endregion
 
-        private void tsbV2rayWebsite_Click(object sender, EventArgs e)
-        {
-            Process.Start(Global.v2rayWebsiteUrl);
-        }
-
-        private void tsbTestMe_Click(object sender, EventArgs e)
-        {
-            string result = httpProxyTest() + "ms";
-            AppendText(false, string.Format(UIRes.I18N("TestMeOutput"), result));
-        }
-        private int httpProxyTest()
-        {
-            SpeedtestHandler statistics = new SpeedtestHandler(ref config, ref v2rayHandler, lvSelecteds, "", UpdateSpeedtestHandler);
-            return statistics.RunAvailabilityCheck();
-        }
     }
 }
