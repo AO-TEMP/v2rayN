@@ -19,7 +19,7 @@ namespace v2rayN.Resx {
     // 类通过类似于 ResGen 或 Visual Studio 的工具自动生成的。
     // 若要添加或移除成员，请编辑 .ResX 文件，然后重新运行 ResGen
     // (以 /str 作为命令选项)，或重新生成 VS 项目。
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class ResUI {
@@ -57,6 +57,15 @@ namespace v2rayN.Resx {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Do you want to append rules? Choose yes to append, choose otherwise to replace 的本地化字符串。
+        /// </summary>
+        internal static string AddBatchRoutingRulesYesNo {
+            get {
+                return ResourceManager.GetString("AddBatchRoutingRulesYesNo", resourceCulture);
             }
         }
         
@@ -448,7 +457,16 @@ namespace v2rayN.Resx {
         }
         
         /// <summary>
-        ///   查找类似 Download V2ray successfully 的本地化字符串。
+        ///   查找类似 Download GeoFile: {0} successfully 的本地化字符串。
+        /// </summary>
+        internal static string MsgDownloadGeoFileSuccessfully {
+            get {
+                return ResourceManager.GetString("MsgDownloadGeoFileSuccessfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Download Core successfully 的本地化字符串。
         /// </summary>
         internal static string MsgDownloadV2rayCoreSuccessfully {
             get {
@@ -471,6 +489,15 @@ namespace v2rayN.Resx {
         internal static string MsgGetSubscriptionSuccessfully {
             get {
                 return ResourceManager.GetString("MsgGetSubscriptionSuccessfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Informations (Filter : {0}) 的本地化字符串。
+        /// </summary>
+        internal static string MsgInformationTitle {
+            get {
+                return ResourceManager.GetString("MsgInformationTitle", resourceCulture);
             }
         }
         
@@ -592,7 +619,7 @@ namespace v2rayN.Resx {
         }
         
         /// <summary>
-        ///   查找类似 Update V2rayCore successfully 的本地化字符串。
+        ///   查找类似 Update Core successfully 的本地化字符串。
         /// </summary>
         internal static string MsgUpdateV2rayCoreSuccessfully {
             get {
@@ -601,7 +628,7 @@ namespace v2rayN.Resx {
         }
         
         /// <summary>
-        ///   查找类似 Update V2rayCore successfully! Restarting service... 的本地化字符串。
+        ///   查找类似 Update Core successfully! Restarting service... 的本地化字符串。
         /// </summary>
         internal static string MsgUpdateV2rayCoreSuccessfullyMore {
             get {
@@ -637,7 +664,7 @@ namespace v2rayN.Resx {
         }
         
         /// <summary>
-        ///   查找类似 V2ray-core not found, please download: {0} 的本地化字符串。
+        ///   查找类似 Core not found, please download: {0} 的本地化字符串。
         /// </summary>
         internal static string NotFoundCore {
             get {

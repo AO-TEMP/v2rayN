@@ -7,7 +7,7 @@ namespace v2rayN
     {
         #region 常量
 
-
+        public const string DownloadFileName = "v2ray-windows.zip";
         public const string v2rayWebsiteUrl = @"https://www.v2fly.org/";
         public const string AboutUrl = @"https://github.com/2dust/v2rayN";
         public const string UpdateUrl = AboutUrl + @"/releases";
@@ -194,6 +194,10 @@ namespace v2rayN
         public const string RoutingRuleComma = "<COMMA>";
 
         public static readonly IEnumerable<string> ssSecuritys = new HashSet<string> { "aes-256-gcm", "aes-128-gcm", "chacha20-poly1305", "chacha20-ietf-poly1305", "none", "plain" };
+
+        public const string GrpcgunMode = "gun";
+        public const string GrpcmultiMode = "multi";
+        
         #endregion
 
         #region 全局变量

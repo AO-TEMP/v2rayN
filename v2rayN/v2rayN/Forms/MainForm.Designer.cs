@@ -66,6 +66,26 @@
             this.menuExport2SubContent = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbServer = new System.Windows.Forms.ToolStripDropDownButton();
             this.qrCodeControl = new v2rayN.Forms.QRCodeControl();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.gbMsgTitle = new System.Windows.Forms.GroupBox();
+            this.txtMsgBox = new System.Windows.Forms.TextBox();
+            this.cmsMsgBox = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.menuMsgBoxSelectAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuMsgBoxCopy = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuMsgBoxCopyAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuMsgBoxAddRoutingRule = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuMsgBoxFilter = new System.Windows.Forms.ToolStripMenuItem();
+            this.ssMain = new System.Windows.Forms.StatusStrip();
+            this.toolSslSocksPortLab = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolSslSocksPort = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolSslBlank1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolSslHttpPortLab = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolSslHttpPort = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolSslBlank2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolSslBlank3 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolSslServerSpeed = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolSslBlank4 = new System.Windows.Forms.ToolStripStatusLabel();
             this.notifyMain = new System.Windows.Forms.NotifyIcon(this.components);
             this.cmsMain = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.menuSysAgentMode = new System.Windows.Forms.ToolStripMenuItem();
@@ -81,24 +101,6 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.menuExit = new System.Windows.Forms.ToolStripMenuItem();
             this.bgwScan = new System.ComponentModel.BackgroundWorker();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.txtMsgBox = new System.Windows.Forms.TextBox();
-            this.cmsMsgBox = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.menuMsgBoxSelectAll = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuMsgBoxCopy = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuMsgBoxCopyAll = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuMsgBoxAddRoutingRule = new System.Windows.Forms.ToolStripMenuItem();
-            this.ssMain = new System.Windows.Forms.StatusStrip();
-            this.toolSslSocksPortLab = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolSslSocksPort = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolSslBlank1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolSslHttpPortLab = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolSslHttpPort = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolSslBlank2 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolSslBlank3 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolSslServerSpeed = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolSslBlank4 = new System.Windows.Forms.ToolStripStatusLabel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tsMain = new System.Windows.Forms.ToolStrip();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
@@ -110,6 +112,8 @@
             this.tsbSetting = new System.Windows.Forms.ToolStripDropDownButton();
             this.tsbOptionSetting = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbRoutingSetting = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator14 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbBackupGuiNConfig = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbReload = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
@@ -117,6 +121,9 @@
             this.tsbCheckUpdateN = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbCheckUpdateCore = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbCheckUpdateXrayCore = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator15 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbCheckUpdateGeoSite = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsbCheckUpdateGeoIP = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbHelp = new System.Windows.Forms.ToolStripDropDownButton();
             this.tsbAbout = new System.Windows.Forms.ToolStripMenuItem();
@@ -132,11 +139,15 @@
             this.scMain.Panel2.SuspendLayout();
             this.scMain.SuspendLayout();
             this.cmsLv.SuspendLayout();
-            this.cmsMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.gbMsgTitle.SuspendLayout();
             this.cmsMsgBox.SuspendLayout();
             this.ssMain.SuspendLayout();
+            this.cmsMain.SuspendLayout();
             this.tsMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -410,6 +421,154 @@
             resources.ApplyResources(this.qrCodeControl, "qrCodeControl");
             this.qrCodeControl.Name = "qrCodeControl";
             // 
+            // splitContainer1
+            // 
+            resources.ApplyResources(this.splitContainer1, "splitContainer1");
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            resources.ApplyResources(this.splitContainer1.Panel1, "splitContainer1.Panel1");
+            this.splitContainer1.Panel1.Controls.Add(this.groupBox1);
+            // 
+            // splitContainer1.Panel2
+            // 
+            resources.ApplyResources(this.splitContainer1.Panel2, "splitContainer1.Panel2");
+            this.splitContainer1.Panel2.Controls.Add(this.gbMsgTitle);
+            // 
+            // groupBox1
+            // 
+            resources.ApplyResources(this.groupBox1, "groupBox1");
+            this.groupBox1.Controls.Add(this.scMain);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.TabStop = false;
+            // 
+            // gbMsgTitle
+            // 
+            resources.ApplyResources(this.gbMsgTitle, "gbMsgTitle");
+            this.gbMsgTitle.Controls.Add(this.txtMsgBox);
+            this.gbMsgTitle.Controls.Add(this.ssMain);
+            this.gbMsgTitle.Name = "gbMsgTitle";
+            this.gbMsgTitle.TabStop = false;
+            // 
+            // txtMsgBox
+            // 
+            resources.ApplyResources(this.txtMsgBox, "txtMsgBox");
+            this.txtMsgBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(49)))), ((int)(((byte)(52)))));
+            this.txtMsgBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtMsgBox.ContextMenuStrip = this.cmsMsgBox;
+            this.txtMsgBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(226)))), ((int)(((byte)(228)))));
+            this.txtMsgBox.Name = "txtMsgBox";
+            this.txtMsgBox.ReadOnly = true;
+            this.txtMsgBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtMsgBox_KeyDown);
+            // 
+            // cmsMsgBox
+            // 
+            resources.ApplyResources(this.cmsMsgBox, "cmsMsgBox");
+            this.cmsMsgBox.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuMsgBoxSelectAll,
+            this.menuMsgBoxCopy,
+            this.menuMsgBoxCopyAll,
+            this.menuMsgBoxAddRoutingRule,
+            this.menuMsgBoxFilter});
+            this.cmsMsgBox.Name = "cmsMsgBox";
+            // 
+            // menuMsgBoxSelectAll
+            // 
+            resources.ApplyResources(this.menuMsgBoxSelectAll, "menuMsgBoxSelectAll");
+            this.menuMsgBoxSelectAll.Name = "menuMsgBoxSelectAll";
+            this.menuMsgBoxSelectAll.Click += new System.EventHandler(this.menuMsgBoxSelectAll_Click);
+            // 
+            // menuMsgBoxCopy
+            // 
+            resources.ApplyResources(this.menuMsgBoxCopy, "menuMsgBoxCopy");
+            this.menuMsgBoxCopy.Name = "menuMsgBoxCopy";
+            this.menuMsgBoxCopy.Click += new System.EventHandler(this.menuMsgBoxCopy_Click);
+            // 
+            // menuMsgBoxCopyAll
+            // 
+            resources.ApplyResources(this.menuMsgBoxCopyAll, "menuMsgBoxCopyAll");
+            this.menuMsgBoxCopyAll.Name = "menuMsgBoxCopyAll";
+            this.menuMsgBoxCopyAll.Click += new System.EventHandler(this.menuMsgBoxCopyAll_Click);
+            // 
+            // menuMsgBoxAddRoutingRule
+            // 
+            resources.ApplyResources(this.menuMsgBoxAddRoutingRule, "menuMsgBoxAddRoutingRule");
+            this.menuMsgBoxAddRoutingRule.Name = "menuMsgBoxAddRoutingRule";
+            this.menuMsgBoxAddRoutingRule.Click += new System.EventHandler(this.menuMsgBoxAddRoutingRule_Click);
+            // 
+            // menuMsgBoxFilter
+            // 
+            resources.ApplyResources(this.menuMsgBoxFilter, "menuMsgBoxFilter");
+            this.menuMsgBoxFilter.Name = "menuMsgBoxFilter";
+            this.menuMsgBoxFilter.Click += new System.EventHandler(this.menuMsgBoxFilter_Click);
+            // 
+            // ssMain
+            // 
+            resources.ApplyResources(this.ssMain, "ssMain");
+            this.ssMain.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.ssMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolSslSocksPortLab,
+            this.toolSslSocksPort,
+            this.toolSslBlank1,
+            this.toolSslHttpPortLab,
+            this.toolSslHttpPort,
+            this.toolSslBlank2,
+            this.toolSslBlank3,
+            this.toolSslServerSpeed,
+            this.toolSslBlank4});
+            this.ssMain.Name = "ssMain";
+            this.ssMain.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.ssMain_ItemClicked);
+            // 
+            // toolSslSocksPortLab
+            // 
+            resources.ApplyResources(this.toolSslSocksPortLab, "toolSslSocksPortLab");
+            this.toolSslSocksPortLab.Name = "toolSslSocksPortLab";
+            // 
+            // toolSslSocksPort
+            // 
+            resources.ApplyResources(this.toolSslSocksPort, "toolSslSocksPort");
+            this.toolSslSocksPort.Name = "toolSslSocksPort";
+            // 
+            // toolSslBlank1
+            // 
+            resources.ApplyResources(this.toolSslBlank1, "toolSslBlank1");
+            this.toolSslBlank1.Name = "toolSslBlank1";
+            this.toolSslBlank1.Spring = true;
+            // 
+            // toolSslHttpPortLab
+            // 
+            resources.ApplyResources(this.toolSslHttpPortLab, "toolSslHttpPortLab");
+            this.toolSslHttpPortLab.Name = "toolSslHttpPortLab";
+            // 
+            // toolSslHttpPort
+            // 
+            resources.ApplyResources(this.toolSslHttpPort, "toolSslHttpPort");
+            this.toolSslHttpPort.Name = "toolSslHttpPort";
+            // 
+            // toolSslBlank2
+            // 
+            resources.ApplyResources(this.toolSslBlank2, "toolSslBlank2");
+            this.toolSslBlank2.Name = "toolSslBlank2";
+            this.toolSslBlank2.Spring = true;
+            // 
+            // toolSslBlank3
+            // 
+            resources.ApplyResources(this.toolSslBlank3, "toolSslBlank3");
+            this.toolSslBlank3.Name = "toolSslBlank3";
+            this.toolSslBlank3.Spring = true;
+            // 
+            // toolSslServerSpeed
+            // 
+            resources.ApplyResources(this.toolSslServerSpeed, "toolSslServerSpeed");
+            this.toolSslServerSpeed.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolSslServerSpeed.Name = "toolSslServerSpeed";
+            // 
+            // toolSslBlank4
+            // 
+            resources.ApplyResources(this.toolSslBlank4, "toolSslBlank4");
+            this.toolSslBlank4.Name = "toolSslBlank4";
+            // 
             // notifyMain
             // 
             resources.ApplyResources(this.notifyMain, "notifyMain");
@@ -512,132 +671,6 @@
             this.bgwScan.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwScan_DoWork);
             this.bgwScan.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgwScan_ProgressChanged);
             // 
-            // groupBox1
-            // 
-            resources.ApplyResources(this.groupBox1, "groupBox1");
-            this.groupBox1.Controls.Add(this.scMain);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.TabStop = false;
-            // 
-            // groupBox2
-            // 
-            resources.ApplyResources(this.groupBox2, "groupBox2");
-            this.groupBox2.Controls.Add(this.txtMsgBox);
-            this.groupBox2.Controls.Add(this.ssMain);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.TabStop = false;
-            // 
-            // txtMsgBox
-            // 
-            resources.ApplyResources(this.txtMsgBox, "txtMsgBox");
-            this.txtMsgBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(49)))), ((int)(((byte)(52)))));
-            this.txtMsgBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtMsgBox.ContextMenuStrip = this.cmsMsgBox;
-            this.txtMsgBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(226)))), ((int)(((byte)(228)))));
-            this.txtMsgBox.Name = "txtMsgBox";
-            this.txtMsgBox.ReadOnly = true;
-            this.txtMsgBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtMsgBox_KeyDown);
-            // 
-            // cmsMsgBox
-            // 
-            resources.ApplyResources(this.cmsMsgBox, "cmsMsgBox");
-            this.cmsMsgBox.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuMsgBoxSelectAll,
-            this.menuMsgBoxCopy,
-            this.menuMsgBoxCopyAll,
-            this.menuMsgBoxAddRoutingRule});
-            this.cmsMsgBox.Name = "cmsMsgBox";
-            // 
-            // menuMsgBoxSelectAll
-            // 
-            resources.ApplyResources(this.menuMsgBoxSelectAll, "menuMsgBoxSelectAll");
-            this.menuMsgBoxSelectAll.Name = "menuMsgBoxSelectAll";
-            this.menuMsgBoxSelectAll.Click += new System.EventHandler(this.menuMsgBoxSelectAll_Click);
-            // 
-            // menuMsgBoxCopy
-            // 
-            resources.ApplyResources(this.menuMsgBoxCopy, "menuMsgBoxCopy");
-            this.menuMsgBoxCopy.Name = "menuMsgBoxCopy";
-            this.menuMsgBoxCopy.Click += new System.EventHandler(this.menuMsgBoxCopy_Click);
-            // 
-            // menuMsgBoxCopyAll
-            // 
-            resources.ApplyResources(this.menuMsgBoxCopyAll, "menuMsgBoxCopyAll");
-            this.menuMsgBoxCopyAll.Name = "menuMsgBoxCopyAll";
-            this.menuMsgBoxCopyAll.Click += new System.EventHandler(this.menuMsgBoxCopyAll_Click);
-            // 
-            // menuMsgBoxAddRoutingRule
-            // 
-            resources.ApplyResources(this.menuMsgBoxAddRoutingRule, "menuMsgBoxAddRoutingRule");
-            this.menuMsgBoxAddRoutingRule.Name = "menuMsgBoxAddRoutingRule";
-            this.menuMsgBoxAddRoutingRule.Click += new System.EventHandler(this.menuMsgBoxAddRoutingRule_Click);
-            // 
-            // ssMain
-            // 
-            resources.ApplyResources(this.ssMain, "ssMain");
-            this.ssMain.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.ssMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolSslSocksPortLab,
-            this.toolSslSocksPort,
-            this.toolSslBlank1,
-            this.toolSslHttpPortLab,
-            this.toolSslHttpPort,
-            this.toolSslBlank2,
-            this.toolSslBlank3,
-            this.toolSslServerSpeed,
-            this.toolSslBlank4});
-            this.ssMain.Name = "ssMain";
-            this.ssMain.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.ssMain_ItemClicked);
-            // 
-            // toolSslSocksPortLab
-            // 
-            resources.ApplyResources(this.toolSslSocksPortLab, "toolSslSocksPortLab");
-            this.toolSslSocksPortLab.Name = "toolSslSocksPortLab";
-            // 
-            // toolSslSocksPort
-            // 
-            resources.ApplyResources(this.toolSslSocksPort, "toolSslSocksPort");
-            this.toolSslSocksPort.Name = "toolSslSocksPort";
-            // 
-            // toolSslBlank1
-            // 
-            resources.ApplyResources(this.toolSslBlank1, "toolSslBlank1");
-            this.toolSslBlank1.Name = "toolSslBlank1";
-            this.toolSslBlank1.Spring = true;
-            // 
-            // toolSslHttpPortLab
-            // 
-            resources.ApplyResources(this.toolSslHttpPortLab, "toolSslHttpPortLab");
-            this.toolSslHttpPortLab.Name = "toolSslHttpPortLab";
-            // 
-            // toolSslHttpPort
-            // 
-            resources.ApplyResources(this.toolSslHttpPort, "toolSslHttpPort");
-            this.toolSslHttpPort.Name = "toolSslHttpPort";
-            // 
-            // toolSslBlank2
-            // 
-            resources.ApplyResources(this.toolSslBlank2, "toolSslBlank2");
-            this.toolSslBlank2.Name = "toolSslBlank2";
-            this.toolSslBlank2.Spring = true;
-            // 
-            // toolSslBlank3
-            // 
-            resources.ApplyResources(this.toolSslBlank3, "toolSslBlank3");
-            this.toolSslBlank3.Name = "toolSslBlank3";
-            this.toolSslBlank3.Spring = true;
-            // 
-            // toolSslServerSpeed
-            // 
-            resources.ApplyResources(this.toolSslServerSpeed, "toolSslServerSpeed");
-            this.toolSslServerSpeed.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolSslServerSpeed.Name = "toolSslServerSpeed";
-            // 
-            // toolSslBlank4
-            // 
-            resources.ApplyResources(this.toolSslBlank4, "toolSslBlank4");
-            this.toolSslBlank4.Name = "toolSslBlank4";
-            // 
             // panel1
             // 
             resources.ApplyResources(this.panel1, "panel1");
@@ -711,7 +744,9 @@
             resources.ApplyResources(this.tsbSetting, "tsbSetting");
             this.tsbSetting.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbOptionSetting,
-            this.tsbRoutingSetting});
+            this.tsbRoutingSetting,
+            this.toolStripSeparator14,
+            this.tsbBackupGuiNConfig});
             this.tsbSetting.Image = global::v2rayN.Properties.Resources.option;
             this.tsbSetting.Name = "tsbSetting";
             // 
@@ -726,6 +761,17 @@
             resources.ApplyResources(this.tsbRoutingSetting, "tsbRoutingSetting");
             this.tsbRoutingSetting.Name = "tsbRoutingSetting";
             this.tsbRoutingSetting.Click += new System.EventHandler(this.tsbRoutingSetting_Click);
+            // 
+            // toolStripSeparator14
+            // 
+            resources.ApplyResources(this.toolStripSeparator14, "toolStripSeparator14");
+            this.toolStripSeparator14.Name = "toolStripSeparator14";
+            // 
+            // tsbBackupGuiNConfig
+            // 
+            resources.ApplyResources(this.tsbBackupGuiNConfig, "tsbBackupGuiNConfig");
+            this.tsbBackupGuiNConfig.Name = "tsbBackupGuiNConfig";
+            this.tsbBackupGuiNConfig.Click += new System.EventHandler(this.tsbBackupGuiNConfig_Click);
             // 
             // toolStripSeparator5
             // 
@@ -749,7 +795,10 @@
             this.tsbCheckUpdate.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbCheckUpdateN,
             this.tsbCheckUpdateCore,
-            this.tsbCheckUpdateXrayCore});
+            this.tsbCheckUpdateXrayCore,
+            this.toolStripSeparator15,
+            this.tsbCheckUpdateGeoSite,
+            this.tsbCheckUpdateGeoIP});
             this.tsbCheckUpdate.Image = global::v2rayN.Properties.Resources.checkupdate;
             this.tsbCheckUpdate.Name = "tsbCheckUpdate";
             // 
@@ -770,6 +819,23 @@
             resources.ApplyResources(this.tsbCheckUpdateXrayCore, "tsbCheckUpdateXrayCore");
             this.tsbCheckUpdateXrayCore.Name = "tsbCheckUpdateXrayCore";
             this.tsbCheckUpdateXrayCore.Click += new System.EventHandler(this.tsbCheckUpdateXrayCore_Click);
+            // 
+            // toolStripSeparator15
+            // 
+            resources.ApplyResources(this.toolStripSeparator15, "toolStripSeparator15");
+            this.toolStripSeparator15.Name = "toolStripSeparator15";
+            // 
+            // tsbCheckUpdateGeoSite
+            // 
+            resources.ApplyResources(this.tsbCheckUpdateGeoSite, "tsbCheckUpdateGeoSite");
+            this.tsbCheckUpdateGeoSite.Name = "tsbCheckUpdateGeoSite";
+            this.tsbCheckUpdateGeoSite.Click += new System.EventHandler(this.tsbCheckUpdateGeoSite_Click);
+            // 
+            // tsbCheckUpdateGeoIP
+            // 
+            resources.ApplyResources(this.tsbCheckUpdateGeoIP, "tsbCheckUpdateGeoIP");
+            this.tsbCheckUpdateGeoIP.Name = "tsbCheckUpdateGeoIP";
+            this.tsbCheckUpdateGeoIP.Click += new System.EventHandler(this.tsbCheckUpdateGeoIP_Click);
             // 
             // toolStripSeparator10
             // 
@@ -840,8 +906,7 @@
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.tsMain);
             this.MaximizeBox = true;
@@ -857,13 +922,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.scMain)).EndInit();
             this.scMain.ResumeLayout(false);
             this.cmsLv.ResumeLayout(false);
-            this.cmsMain.ResumeLayout(false);
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.gbMsgTitle.ResumeLayout(false);
+            this.gbMsgTitle.PerformLayout();
             this.cmsMsgBox.ResumeLayout(false);
             this.ssMain.ResumeLayout(false);
             this.ssMain.PerformLayout();
+            this.cmsMain.ResumeLayout(false);
             this.tsMain.ResumeLayout(false);
             this.tsMain.PerformLayout();
             this.ResumeLayout(false);
@@ -874,7 +943,7 @@
 #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox gbMsgTitle;
         private System.Windows.Forms.TextBox txtMsgBox;
         private v2rayN.Base.ListViewFlickerFree lvServers;
         private System.Windows.Forms.NotifyIcon notifyMain;
@@ -970,6 +1039,13 @@
         private System.Windows.Forms.ToolStripMenuItem menuMsgBoxCopy;
         private System.Windows.Forms.ToolStripMenuItem menuMsgBoxAddRoutingRule;
         private System.Windows.Forms.ToolStripMenuItem menuMsgBoxCopyAll;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator14;
+        private System.Windows.Forms.ToolStripMenuItem tsbBackupGuiNConfig;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator15;
+        private System.Windows.Forms.ToolStripMenuItem tsbCheckUpdateGeoSite;
+        private System.Windows.Forms.ToolStripMenuItem tsbCheckUpdateGeoIP;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.ToolStripMenuItem menuMsgBoxFilter;
     }
 }
 

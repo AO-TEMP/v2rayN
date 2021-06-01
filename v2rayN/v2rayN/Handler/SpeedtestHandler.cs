@@ -16,6 +16,10 @@ namespace v2rayN.Handler
         private List<int> _selecteds;
         Action<int, string> _updateFunc;
 
+        public SpeedtestHandler(ref Config config)
+        {
+            _config = config;
+        }
 
         public SpeedtestHandler(ref Config config, ref V2rayHandler v2rayHandler, List<int> selecteds, string actionType, Action<int, string> update)
         {
@@ -97,6 +101,11 @@ namespace v2rayN.Handler
                 string msg = string.Empty;
 
                 pid = _v2rayHandler.LoadV2rayConfigString(_config, _selecteds);
+                if (pid < 0)
+                {
+                    _updateFunc(_selecteds[0], UIRes.I18N("OperationFailed"));
+                    return;
+                }
 
                 //Thread.Sleep(5000);
                 int httpPort = _config.GetLocalPort("speedtest");
@@ -178,6 +187,11 @@ namespace v2rayN.Handler
             }
 
             pid = _v2rayHandler.LoadV2rayConfigString(_config, _selecteds);
+            if (pid < 0)
+            {
+                _updateFunc(_selecteds[0], UIRes.I18N("OperationFailed"));
+                return;
+            }
 
             string url = _config.speedTestUrl;
             DownloadHandle downloadHandle2 = new DownloadHandle();

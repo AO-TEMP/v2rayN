@@ -45,12 +45,8 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnOK = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.menuServer = new System.Windows.Forms.MenuStrip();
-            this.MenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemImportClipboard = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.menuServer.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnClose
@@ -161,26 +157,6 @@
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
             // 
-            // menuServer
-            // 
-            this.menuServer.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.MenuItem1});
-            resources.ApplyResources(this.menuServer, "menuServer");
-            this.menuServer.Name = "menuServer";
-            // 
-            // MenuItem1
-            // 
-            this.MenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuItemImportClipboard});
-            this.MenuItem1.Name = "MenuItem1";
-            resources.ApplyResources(this.MenuItem1, "MenuItem1");
-            // 
-            // menuItemImportClipboard
-            // 
-            this.menuItemImportClipboard.Name = "menuItemImportClipboard";
-            resources.ApplyResources(this.menuItemImportClipboard, "menuItemImportClipboard");
-            this.menuItemImportClipboard.Click += new System.EventHandler(this.menuItemImportClipboard_Click);
-            // 
             // AddServer3Form
             // 
             resources.ApplyResources(this, "$this");
@@ -189,7 +165,6 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.menuServer);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MinimizeBox = true;
             this.Name = "AddServer3Form";
@@ -197,10 +172,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel2.ResumeLayout(false);
-            this.menuServer.ResumeLayout(false);
-            this.menuServer.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -222,8 +194,5 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.MenuStrip menuServer;
-        private System.Windows.Forms.ToolStripMenuItem MenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem menuItemImportClipboard;
     }
 }

@@ -36,6 +36,7 @@
             this.btnGUID = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label25 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.panTlsMore = new System.Windows.Forms.Panel();
@@ -74,30 +75,22 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnOK = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.menuServer = new System.Windows.Forms.MenuStrip();
-            this.MenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuItemImportClient = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuItemImportServer = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.MenuItemImportClipboard = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panTlsMore.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.menuServer.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnClose
             // 
-            resources.ApplyResources(this.btnClose, "btnClose");
             this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            resources.ApplyResources(this.btnClose, "btnClose");
             this.btnClose.Name = "btnClose";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // groupBox1
             // 
-            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Controls.Add(this.cmbFlow);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.btnGUID);
@@ -114,12 +107,12 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.txtAddress);
             this.groupBox1.Controls.Add(this.label1);
+            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             // 
             // cmbFlow
             // 
-            resources.ApplyResources(this.cmbFlow, "cmbFlow");
             this.cmbFlow.FormattingEnabled = true;
             this.cmbFlow.Items.AddRange(new object[] {
             resources.GetString("cmbFlow.Items"),
@@ -127,6 +120,7 @@
             resources.GetString("cmbFlow.Items2"),
             resources.GetString("cmbFlow.Items3"),
             resources.GetString("cmbFlow.Items4")});
+            resources.ApplyResources(this.cmbFlow, "cmbFlow");
             this.cmbFlow.Name = "cmbFlow";
             // 
             // label4
@@ -148,7 +142,7 @@
             // 
             // groupBox2
             // 
-            resources.ApplyResources(this.groupBox2, "groupBox2");
+            this.groupBox2.Controls.Add(this.label25);
             this.groupBox2.Controls.Add(this.label24);
             this.groupBox2.Controls.Add(this.label23);
             this.groupBox2.Controls.Add(this.panTlsMore);
@@ -169,8 +163,14 @@
             this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.cmbHeaderType);
+            resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.TabStop = false;
+            // 
+            // label25
+            // 
+            resources.ApplyResources(this.label25, "label25");
+            this.label25.Name = "label25";
             // 
             // label24
             // 
@@ -184,11 +184,11 @@
             // 
             // panTlsMore
             // 
-            resources.ApplyResources(this.panTlsMore, "panTlsMore");
             this.panTlsMore.Controls.Add(this.txtSNI);
             this.panTlsMore.Controls.Add(this.label22);
             this.panTlsMore.Controls.Add(this.label21);
             this.panTlsMore.Controls.Add(this.cmbAllowInsecure);
+            resources.ApplyResources(this.panTlsMore, "panTlsMore");
             this.panTlsMore.Name = "panTlsMore";
             // 
             // txtSNI
@@ -208,13 +208,13 @@
             // 
             // cmbAllowInsecure
             // 
-            resources.ApplyResources(this.cmbAllowInsecure, "cmbAllowInsecure");
             this.cmbAllowInsecure.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbAllowInsecure.FormattingEnabled = true;
             this.cmbAllowInsecure.Items.AddRange(new object[] {
             resources.GetString("cmbAllowInsecure.Items"),
             resources.GetString("cmbAllowInsecure.Items1"),
             resources.GetString("cmbAllowInsecure.Items2")});
+            resources.ApplyResources(this.cmbAllowInsecure, "cmbAllowInsecure");
             this.cmbAllowInsecure.Name = "cmbAllowInsecure";
             // 
             // label9
@@ -234,7 +234,6 @@
             // 
             // cmbNetwork
             // 
-            resources.ApplyResources(this.cmbNetwork, "cmbNetwork");
             this.cmbNetwork.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbNetwork.FormattingEnabled = true;
             this.cmbNetwork.Items.AddRange(new object[] {
@@ -242,7 +241,9 @@
             resources.GetString("cmbNetwork.Items1"),
             resources.GetString("cmbNetwork.Items2"),
             resources.GetString("cmbNetwork.Items3"),
-            resources.GetString("cmbNetwork.Items4")});
+            resources.GetString("cmbNetwork.Items4"),
+            resources.GetString("cmbNetwork.Items5")});
+            resources.ApplyResources(this.cmbNetwork, "cmbNetwork");
             this.cmbNetwork.Name = "cmbNetwork";
             this.cmbNetwork.SelectedIndexChanged += new System.EventHandler(this.cmbNetwork_SelectedIndexChanged);
             // 
@@ -283,13 +284,13 @@
             // 
             // cmbStreamSecurity
             // 
-            resources.ApplyResources(this.cmbStreamSecurity, "cmbStreamSecurity");
             this.cmbStreamSecurity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbStreamSecurity.FormattingEnabled = true;
             this.cmbStreamSecurity.Items.AddRange(new object[] {
             resources.GetString("cmbStreamSecurity.Items"),
             resources.GetString("cmbStreamSecurity.Items1"),
             resources.GetString("cmbStreamSecurity.Items2")});
+            resources.ApplyResources(this.cmbStreamSecurity, "cmbStreamSecurity");
             this.cmbStreamSecurity.Name = "cmbStreamSecurity";
             this.cmbStreamSecurity.SelectedIndexChanged += new System.EventHandler(this.cmbStreamSecurity_SelectedIndexChanged);
             // 
@@ -315,7 +316,6 @@
             // 
             // cmbHeaderType
             // 
-            resources.ApplyResources(this.cmbHeaderType, "cmbHeaderType");
             this.cmbHeaderType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbHeaderType.FormattingEnabled = true;
             this.cmbHeaderType.Items.AddRange(new object[] {
@@ -326,6 +326,7 @@
             resources.GetString("cmbHeaderType.Items4"),
             resources.GetString("cmbHeaderType.Items5"),
             resources.GetString("cmbHeaderType.Items6")});
+            resources.ApplyResources(this.cmbHeaderType, "cmbHeaderType");
             this.cmbHeaderType.Name = "cmbHeaderType";
             // 
             // label8
@@ -335,11 +336,11 @@
             // 
             // cmbSecurity
             // 
-            resources.ApplyResources(this.cmbSecurity, "cmbSecurity");
             this.cmbSecurity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
             this.cmbSecurity.FormattingEnabled = true;
             this.cmbSecurity.Items.AddRange(new object[] {
             resources.GetString("cmbSecurity.Items")});
+            resources.ApplyResources(this.cmbSecurity, "cmbSecurity");
             this.cmbSecurity.Name = "cmbSecurity";
             // 
             // txtRemarks
@@ -389,9 +390,9 @@
             // 
             // panel2
             // 
-            resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Controls.Add(this.btnClose);
             this.panel2.Controls.Add(this.btnOK);
+            resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
             // 
             // btnOK
@@ -406,46 +407,6 @@
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
             // 
-            // menuServer
-            // 
-            resources.ApplyResources(this.menuServer, "menuServer");
-            this.menuServer.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.MenuItem1});
-            this.menuServer.Name = "menuServer";
-            // 
-            // MenuItem1
-            // 
-            resources.ApplyResources(this.MenuItem1, "MenuItem1");
-            this.MenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.MenuItemImportClient,
-            this.MenuItemImportServer,
-            this.toolStripSeparator1,
-            this.MenuItemImportClipboard});
-            this.MenuItem1.Name = "MenuItem1";
-            // 
-            // MenuItemImportClient
-            // 
-            resources.ApplyResources(this.MenuItemImportClient, "MenuItemImportClient");
-            this.MenuItemImportClient.Name = "MenuItemImportClient";
-            this.MenuItemImportClient.Click += new System.EventHandler(this.MenuItemImportClient_Click);
-            // 
-            // MenuItemImportServer
-            // 
-            resources.ApplyResources(this.MenuItemImportServer, "MenuItemImportServer");
-            this.MenuItemImportServer.Name = "MenuItemImportServer";
-            this.MenuItemImportServer.Click += new System.EventHandler(this.MenuItemImportServer_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            // 
-            // MenuItemImportClipboard
-            // 
-            resources.ApplyResources(this.MenuItemImportClipboard, "MenuItemImportClipboard");
-            this.MenuItemImportClipboard.Name = "MenuItemImportClipboard";
-            this.MenuItemImportClipboard.Click += new System.EventHandler(this.MenuItemImportClipboard_Click);
-            // 
             // AddServer5Form
             // 
             resources.ApplyResources(this, "$this");
@@ -454,7 +415,6 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.menuServer);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "AddServer5Form";
             this.Load += new System.EventHandler(this.AddServer5Form_Load);
@@ -465,10 +425,7 @@
             this.panTlsMore.ResumeLayout(false);
             this.panTlsMore.PerformLayout();
             this.panel2.ResumeLayout(false);
-            this.menuServer.ResumeLayout(false);
-            this.menuServer.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -500,14 +457,8 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.MenuStrip menuServer;
-        private System.Windows.Forms.ToolStripMenuItem MenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem MenuItemImportClient;
-        private System.Windows.Forms.ToolStripMenuItem MenuItemImportServer;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ComboBox cmbStreamSecurity;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem MenuItemImportClipboard;
         private System.Windows.Forms.Button btnGUID;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label14;
@@ -525,5 +476,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtSNI;
         private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label25;
     }
 }
